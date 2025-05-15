@@ -10,7 +10,7 @@ load_dotenv()
 CLIENT_PORT = os.getenv("CLIENT_PORT")
 
 app=Flask(__name__)
-CORS(app, resources ={r"/api/*": {"origins":[ f"http://localhost:{CLIENT_PORT}","https://slythlab-ai.onrender.com","https://slythlab-ai.vercel.app","https://slythlab-ai.slythlab.dev"]}})
+CORS(app, resources ={r"/api/*": {"origins":[ f"http://localhost:{CLIENT_PORT}","https://slythlab-ai.onrender.com","https://slythlab-ai.vercel.app","https://slythlab-ai.slythlab.dev"]}},supports_credentials=True)
 
 app.register_blueprint(api,url_prefix='/api')
 
