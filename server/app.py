@@ -7,10 +7,10 @@ from routes.index import api
 
 load_dotenv()
 
-PORT = os.getenv("PORT")
+CLIENT_PORT = os.getenv("CLIENT_PORT")
 
 app=Flask(__name__)
-CORS(app, resources ={r"/api/*": {"origins": f"http://localhost:{PORT}"}})
+CORS(app, resources ={r"/api/*": {"origins":[ f"http://localhost:{CLIENT_PORT}","https://slythlab-ai.onrender.com"]}})
 
 app.register_blueprint(api,url_prefix='/api')
 
@@ -22,5 +22,5 @@ def home():
     return jsonify(data)
 
 if __name__=="__main__":
-    port = os.getenv('SERVER_PORT')
+    port = os.getenv('PORT')
     app.run(host='0.0.0.0',port=port)
